@@ -1,6 +1,8 @@
 #!/bin/bash
 
 #ls
+mkdir output
+cd output
 #1. High Level Overview
 echo Customer name:
 read name
