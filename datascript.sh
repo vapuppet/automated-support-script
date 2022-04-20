@@ -10,7 +10,6 @@ echo Customer email:
 read email
 echo Customer name: $name >> output.txt
 echo Customer email: $email >> output.txt
-echo Samiha says hi
 echo Puppet Enterprise Version:
 puppet --version | tee -a output.txt
 
