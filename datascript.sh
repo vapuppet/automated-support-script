@@ -8,6 +8,7 @@ echo Customer name:
 read name
 echo Customer email:
 read email
+echo samiha samiha
 echo Customer name: $name >> output.txt
 echo Customer email: $email >> output.txt
 echo Puppet Enterprise Version:
