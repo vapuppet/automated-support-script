@@ -25,7 +25,7 @@ puppet infratructure status | tee -a output.txt
 echo
 echo Puppet Module List | tee -a output.txt
 echo "puppet module list --all" >> output.txt
-puppet module list --all | tee -a output.txt
+puppet module list -all | tee -a output.txt
 echo  >> output.txt
 
 #4. Bolt Taskts
