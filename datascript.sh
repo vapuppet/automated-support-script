@@ -8,7 +8,6 @@ echo Customer name:
 read name
 echo Customer email:
 read email
-echo samiha samiha
 echo Customer name: $name >> output.txt
 echo Customer email: $email >> output.txt
 echo Puppet Enterprise Version:
@@ -22,7 +21,7 @@ puppet --version | tee -a output.txt
 /opt/puppetlabs/puppet/bin/openssl x509 -in "$(/opt/puppetlabs/bin/puppet config print hostcert)" --enddate --noout | tee -a output.txt
 echo
 echo Puppet Infrastructure Status | tee -a output.txt
-puppet infra status | tee -a output.txt
+puppet Infrastructure status | tee -a output.txt
 echo
 echo Puppet Module List | tee -a output.txt
 echo "puppet module list --all" >> output.txt
