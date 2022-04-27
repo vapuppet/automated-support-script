@@ -30,7 +30,17 @@ puppet module list --all | tee -a output.txt
 #
 
 #6. PQL Queries
-#
-#
+puppet access loging
+    # Active node count:
+puppet query 'nodes[count(certname)]{deactivated is null and expired is null}'
+    # Nodes that are not expired:
+puppet query 'nodes[count(certname)]{expired is null}'
+    # Inactive nodes:
+puppet query 'nodes[count(certname)]{ node_state = "inactive"}'
+    # Nodes using a cached catalog:
+#puppet query 'nodes[count(certname)]{cached_catalog_status = "used"}'
+#puppet query 'nodes[count(certname)]{ catalog_timestamp < "YYYY-MM-DDT00:00:00.000Z" }'
+#puppet query 'nodes[count(certname)]{ catalog_timestamp < "2022-04-25T00:00:00.000Z" }'
+
 
 echo Job Complete!
