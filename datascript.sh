@@ -38,8 +38,14 @@ puppet query 'nodes[count(certname)]{expired is null}'
     # Inactive nodes:
 puppet query 'nodes[count(certname)]{ node_state = "inactive"}'
     # Nodes using a cached catalog:
-#puppet query 'nodes[count(certname)]{cached_catalog_status = "used"}'
-#puppet query 'nodes[count(certname)]{ catalog_timestamp < "YYYY-MM-DDT00:00:00.000Z" }'
+puppet query 'nodes[count(certname)]{cached_catalog_status = "used"}'
+echo catalog timestamp year YYYY
+read year
+echo catalog timestamp month MM
+read month
+echo catalog timestap day DD
+read day
+puppet query 'nodes[count(certname)]{ catalog_timestamp < "'$year-$month-$day'T00:00:00.000Z" }'
 #puppet query 'nodes[count(certname)]{ catalog_timestamp < "2022-04-25T00:00:00.000Z" }'
 
 
