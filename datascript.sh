@@ -30,7 +30,7 @@ puppet module list --all | tee -a output.txt
 #
 
 #6. PQL Queries
-puppet access loging
+puppet access login
     # Active node count:
 puppet query 'nodes[count(certname)]{deactivated is null and expired is null}'
     # Nodes that are not expired:
