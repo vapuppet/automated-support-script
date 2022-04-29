@@ -46,7 +46,5 @@ read month
 echo catalog timestap day DD
 read day
 puppet query 'nodes[count(certname)]{ catalog_timestamp < "'$year-$month-$day'T00:00:00.000Z" }' | tee -a output.txt
-#puppet query 'nodes[count(certname)]{ catalog_timestamp < "2022-04-25T00:00:00.000Z" }'
-
 
 echo Job Complete!
