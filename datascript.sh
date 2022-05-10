@@ -11,7 +11,7 @@ read email
 echo Customer name: $name >> output.txt
 echo Customer email: $email >> output.txt
 puppet --version | tee -a output.txt
-
+echo baseer
 #2. Support Script Generation
 #
 #
