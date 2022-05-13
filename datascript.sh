@@ -22,6 +22,9 @@ puppet module list --all | tee -a output.txt
 
 #4. Bolt Taskts
 #
+bolt task run ca_extend::check_agent_expiry --targets all | tee -a output.txt
+bolt task run ca_extend::check_ca_expiry --targets <primary hostname> | tee -a output.txt
+/opt/puppetlabs/puppet/bin/openssl x509 -in "$(/opt/puppetlabs/bin/puppet config print hostcert)" --enddate --noout | tee -a output.txt
 #
 
 #5. Hiera File
