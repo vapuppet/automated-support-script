@@ -1,8 +1,9 @@
 #!/bin/bash
 
-#ls
+#Create Output Directory
 mkdir output
 cd output
+
 #1. High Level Overview
 echo Customer name:
 read name
@@ -11,9 +12,10 @@ read email
 echo Customer name: $name >> output.txt
 echo Customer email: $email >> output.txt
 puppet --version | tee -a output.txt
+
 #2. Support Script Generation
-#
-#
+mkdir supportscript
+/opt/puppetlabs/bin/puppet enterprise support --dir supportscript
 
 #3. PE Server Commands
 /opt/puppetlabs/puppet/bin/openssl x509 -in "$(/opt/puppetlabs/bin/puppet config print hostcert)" --enddate --noout | tee -a output.txt
@@ -28,8 +30,10 @@ bolt task run ca_extend::check_agent_expiry --targets local://hostname | tee -a 
 #
 
 #5. Hiera File
-#
-#
+#/etc/puppetlabs/code/environments/production/modules/ntp/hiera.yaml
+echo Please enter an existing module in your /etc/puppetlabs/code/environments/production/modules/ environment to collect a hiera.yaml file ex ntp
+read module
+cp /etc/puppetlabs/code/environments/production/modules/$module/hiera.yaml /output/hiera.yaml
 
 #6. PQL Queries
 puppet access login
