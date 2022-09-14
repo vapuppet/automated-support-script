@@ -1,15 +1,18 @@
 #!/bin/bash
 
+#color
+\e[1;32m  = green
+
 #Create Output Directory
 mkdir output
 cd output
 
 #1. High Level Overview
-echo Customer name:
+echo $green Customer name:
 read name
-echo Customer email:
+echo $green Customer email:
 read email
-echo Customer name: $name >> output.txt
+echo ustomer name: $name >> output.txt
 echo Customer email: $email >> output.txt
 puppet --version | tee -a output.txt
 
@@ -31,7 +34,7 @@ bolt task run ca_extend::check_agent_expiry --targets local://hostname | tee -a 
 
 #5. Hiera File
 #/etc/puppetlabs/code/environments/production/modules/ntp/hiera.yaml
-echo Please enter an existing module in your /etc/puppetlabs/code/environments/production/modules/ environment to collect a hiera.yaml file ex ntp
+echo $green Please enter an existing module in your /etc/puppetlabs/code/environments/production/modules/ environment to collect a hiera.yaml file ex ntp
 read module
 cp /etc/puppetlabs/code/environments/production/modules/$module/hiera.yaml /output/hiera.yaml
 
@@ -45,12 +48,12 @@ puppet query 'nodes[count(certname)]{expired is null}' | tee -a output.txt
 puppet query 'nodes[count(certname)]{ node_state = "inactive"}' | tee -a output.txt
     # Nodes using a cached catalog:
 puppet query 'nodes[count(certname)]{cached_catalog_status = "used"}' | tee -a output.txt
-echo catalog timestamp year YYYY
+echo $green catalog timestamp year YYYY
 read year
-echo catalog timestamp month MM
+echo $green catalog timestamp month MM
 read month
-echo catalog timestap day DD
+echo $green catalog timestap day DD
 read day
 puppet query 'nodes[count(certname)]{ catalog_timestamp < "'$year-$month-$day'T00:00:00.000Z" }' | tee -a output.txt
 
-echo Job Complete!
+echo $green Job Complete!
